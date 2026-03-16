@@ -152,10 +152,19 @@
       transition: background .4s, border-color .4s, box-shadow .4s;
     }
     .nav-inner.scrolled {
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      background: rgba(0,0,0,.6); border: 1px solid var(--border);
-      box-shadow: 0 8px 32px -8px rgba(0,0,0,.6);
+      backdrop-filter: blur(28px) saturate(200%) brightness(1.1);
+      -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.1);
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.1) 0%,
+        rgba(255,255,255,0.04) 50%,
+        rgba(255,255,255,0.07) 100%
+      );
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.15) inset,
+        0 -1px 0 rgba(0,0,0,0.15) inset,
+        0 8px 32px -8px rgba(0,0,0,.6);
     }
     .nav-logo { display: flex; align-items: center; gap: .625rem; font-weight: 700; font-size: 1rem; letter-spacing: -.02em; }
     .nav-logo-icon {
@@ -191,54 +200,110 @@
     .hamburger {
       display: none;
       flex-direction: column; justify-content: center; align-items: center;
-      gap: 5px; width: 2.25rem; height: 2.25rem;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: .5rem;
-      transition: background .2s;
+      gap: 5px; width: 2.5rem; height: 2.5rem;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: .625rem;
+      transition: background .2s, border-color .2s;
+      flex-shrink: 0;
     }
-    .hamburger:hover { background: rgba(255,255,255,.08); }
+    .hamburger:hover { background: rgba(255,255,255,.14); border-color: rgba(255,107,43,.4); }
     .hamburger span {
       display: block; width: 1.1rem; height: 1.5px;
       background: #fff; border-radius: 2px;
-      transition: transform .3s, opacity .3s, width .3s;
+      transition: transform .3s cubic-bezier(.22,1,.36,1), opacity .2s, width .2s;
     }
     .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-    /* Mobile nav drawer */
+    /* Liquid glass dropdown */
     #mobile-nav {
       display: none;
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,.96);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      z-index: 49;
-      flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 2rem;
+      position: fixed;
+      top: 4.5rem; right: 1rem;
+      width: min(18rem, calc(100vw - 2rem));
+      backdrop-filter: blur(32px) saturate(200%);
+      -webkit-backdrop-filter: blur(32px) saturate(200%);
+      background: rgba(10,10,10,0.7);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 1.25rem;
+      box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.05) inset;
+      z-index: 200;
+      overflow: hidden;
       opacity: 0;
-      transition: opacity .3s ease;
+      transform: translateY(-8px) scale(.97);
+      transform-origin: top right;
+      transition: opacity .25s cubic-bezier(.22,1,.36,1), transform .25s cubic-bezier(.22,1,.36,1);
       pointer-events: none;
     }
     #mobile-nav.open {
-      display: flex;
+      display: block;
       opacity: 1;
+      transform: translateY(0) scale(1);
       pointer-events: all;
     }
-    #mobile-nav a {
-      font-size: clamp(1.75rem, 8vw, 2.5rem);
-      font-weight: 700; color: rgba(255,255,255,.6);
-      letter-spacing: -.01em;
-      transition: color .2s, transform .2s;
+    /* Top accent bar */
+    #mobile-nav::before {
+      content: '';
+      display: block; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,107,43,.5), transparent);
     }
-    #mobile-nav a:hover { color: var(--orange); transform: translateX(6px); }
-    #mobile-nav .mobile-nav-close {
-      position: absolute; top: 1.5rem; right: 1.5rem;
-      font-size: 1.5rem; color: rgba(255,255,255,.4);
-      background: none; border: none;
-      font-family: var(--font);
+    .mobile-nav-links {
+      padding: .5rem .75rem 1rem;
+      display: flex; flex-direction: column; gap: .25rem;
     }
+    .mobile-nav-links a {
+      display: flex; align-items: center; gap: .875rem;
+      padding: .875rem 1rem;
+      border-radius: .75rem;
+      font-size: 1rem; font-weight: 600;
+      color: rgba(255,255,255,.75);
+      transition: background .2s, color .2s, transform .2s;
+      border: 1px solid transparent;
+    }
+    .mobile-nav-links a:hover {
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.1);
+      color: #fff;
+      transform: translateX(3px);
+    }
+    .mobile-nav-links a .nav-num {
+      font-family: var(--mono); font-size: .65rem;
+      color: var(--orange); opacity: .8; min-width: 1.25rem;
+    }
+    /* Divider */
+    .mobile-nav-divider {
+      height: 1px; margin: .25rem .75rem;
+      background: rgba(255,255,255,.07);
+    }
+    /* Bottom CTA */
+    .mobile-nav-footer {
+      padding: .75rem;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .mobile-nav-footer a {
+      display: block; text-align: center;
+      background: var(--orange); color: #000;
+      padding: .75rem; border-radius: .75rem;
+      font-size: .875rem; font-weight: 700;
+      box-shadow: 0 0 24px -6px rgba(255,107,43,.5);
+      transition: filter .2s;
+    }
+    .mobile-nav-footer a:hover { filter: brightness(1.1); }
+
+    /* Backdrop dimmer */
+    #mobile-nav-backdrop {
+      display: none;
+      position: fixed; inset: 0;
+      z-index: 199;
+      background: rgba(0,0,0,.3);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+    #mobile-nav-backdrop.open { display: block; }
 
     @media(max-width:767px) {
       .nav-links { display: none; }
@@ -372,7 +437,9 @@
 
     /* ── Layout ─────────────────────────────────────────── */
     main { max-width:72rem; margin:0 auto; padding:4rem 1.5rem 6rem; }
-    section { margin-bottom:9rem; }
+    section { margin-bottom:9rem; scroll-margin-top: 5rem; }
+    /* Offset anchor targets for fixed navbar */
+    #about, #experience, #highlights, #contact, #skills-section { scroll-margin-top: 5rem; }
 
     /* ── Marquee ────────────────────────────────────────── */
     .marquee-wrap {
@@ -382,7 +449,7 @@
     }
     .marquee-track { display:flex; gap:2.5rem; width:max-content; animation:marquee 22s linear infinite; }
     .marquee-track:hover { animation-play-state:paused; }
-    .marquee-item { font-size:.75rem; font-weight:500; text-transform:uppercase; letter-spacing:.15em; color:rgba(255,255,255,.2); white-space:nowrap; }
+    .marquee-item { font-size:.75rem; font-weight:500; text-transform:uppercase; letter-spacing:.15em; color:rgba(255,255,255,.55); white-space:nowrap; }
     .marquee-dot { color:var(--orange); margin-left:.75rem; }
     @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
@@ -540,14 +607,14 @@
     @media (max-width: 767px) {
 
       /* Hero mobile — stack photo behind full width, text at bottom */
-      #hero { align-items: flex-end; }
-      #hero-photo img { width: 100%; height: 65%; right: 0; object-position: center top; }
+      #hero { align-items: flex-end; min-height: 100svh; }
+      #hero-photo img { width: 100%; height: 80%; right: 0; object-position: center top; }
       #hero-photo::after {
         background:
-          linear-gradient(to bottom, rgba(0,0,0,.7) 0%, rgba(0,0,0,.5) 35%, rgba(0,0,0,.55) 65%, #000 100%) !important;
+          linear-gradient(to bottom, rgba(0,0,0,.15) 0%, rgba(0,0,0,.1) 30%, rgba(0,0,0,.6) 62%, rgba(0,0,0,.92) 75%, #000 85%) !important;
       }
-      #hero-content { padding: 0 1.25rem 2rem; text-align: left; }
-      #hero h1 { font-size: clamp(1.8rem, 9vw, 3rem); letter-spacing: .04em; }
+      #hero-content { padding: 0 1.25rem 1.5rem; text-align: left; }
+      #hero h1 { font-size: clamp(1.6rem, 8vw, 2.5rem); letter-spacing: .04em; }
       .hero-title-sub { font-size: clamp(.875rem, 4vw, 1.1rem); }
       #hero p.hero-desc { font-size: .875rem; max-width: 100%; }
       .hero-btns { justify-content: flex-start; }
@@ -556,20 +623,40 @@
       .hero-stat-label { font-size: .55rem; }
       .btn-primary, .btn-secondary { padding: .75rem 1.5rem; font-size: .8125rem; }
 
-      /* Navbar */
-      #navbar { padding: .75rem 1rem 0; }
-      .nav-inner { padding: .625rem 1rem; }
+      /* Navbar — pill spans full width with glossy liquid glass on mobile */
+      #navbar { padding: .75rem .75rem 0; }
+      .nav-inner {
+        max-width: 100%;
+        margin: 0;
+        border-radius: 9999px;
+        padding: .625rem 1rem .625rem 1.125rem;
+        /* Glossy liquid glass */
+        backdrop-filter: blur(28px) saturate(200%) brightness(1.15);
+        -webkit-backdrop-filter: blur(28px) saturate(200%) brightness(1.15);
+        background: linear-gradient(
+          135deg,
+          rgba(255,255,255,0.12) 0%,
+          rgba(255,255,255,0.05) 40%,
+          rgba(255,255,255,0.08) 100%
+        ) !important;
+        border: 1px solid rgba(255,255,255,0.2);
+        /* Top highlight for gloss */
+        box-shadow:
+          0 1px 0 rgba(255,255,255,0.18) inset,
+          0 -1px 0 rgba(0,0,0,0.2) inset,
+          0 8px 32px rgba(0,0,0,0.45);
+      }
       .nav-logo { font-size: .875rem; }
       .nav-logo-icon { width: 1.75rem; height: 1.75rem; font-size: .65rem; }
 
       /* Hero */
       #hero h1 {
-        font-size: clamp(1.6rem, 9vw, 3rem);
+        font-size: clamp(1.6rem, 8vw, 2.5rem);
         letter-spacing: .04em;
       }
       .hero-title-sub { font-size: clamp(.875rem, 4vw, 1.1rem); }
       #hero p.hero-desc { font-size: .9rem; }
-      .hero-badge { font-size: .6rem; letter-spacing: .15em; }
+      .hero-badge { display: none; }
       .hero-stats { gap: 1.5rem; }
       .hero-stat-value { font-size: 1.4rem; }
       .hero-stat-item { min-width: 4rem; }
@@ -579,7 +666,8 @@
 
       /* Sections */
       main { padding: 2.5rem 1rem 4rem; }
-      section { margin-bottom: 5rem; }
+      section { margin-bottom: 5rem; scroll-margin-top: 4.5rem; }
+      #about, #experience, #highlights, #contact, #skills-section { scroll-margin-top: 4.5rem; }
       .label { font-size: .6rem; margin-bottom: 1.75rem; }
 
       /* About */
@@ -644,13 +732,21 @@
   <div id="cursor-dot"  aria-hidden="true"></div>
   <div id="cursor-ring" aria-hidden="true"></div>
 
-  <!-- Mobile nav drawer -->
+  <!-- Mobile nav backdrop -->
+  <div id="mobile-nav-backdrop" onclick="closeMobileNav()"></div>
+
+  <!-- Mobile nav liquid glass dropdown -->
   <nav id="mobile-nav" aria-label="Mobile navigation">
-    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">✕</button>
-    <a href="#about"      onclick="closeMobileNav()">About</a>
-    <a href="#experience" onclick="closeMobileNav()">Experience</a>
-    <a href="#highlights" onclick="closeMobileNav()">Highlights</a>
-    <a href="#contact"    onclick="closeMobileNav()">Contact</a>
+    <div class="mobile-nav-links">
+      <a href="#about"      onclick="closeMobileNav()"><span class="nav-num">01</span>About</a>
+      <a href="#experience" onclick="closeMobileNav()"><span class="nav-num">02</span>Experience</a>
+      <a href="#highlights" onclick="closeMobileNav()"><span class="nav-num">03</span>Highlights</a>
+      <a href="#contact"    onclick="closeMobileNav()"><span class="nav-num">04</span>Contact</a>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-footer">
+      <a href="mailto:dharun@dharunvincent.com" onclick="closeMobileNav()">Get in Touch</a>
+    </div>
   </nav>
 
   <!-- Navbar -->
@@ -982,11 +1078,11 @@
         Let's build something <span class="accent">great.</span>
       </h2>
       <div class="contact-links reveal reveal-delay-2">
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
+        <a href="https://www.linkedin.com/in/dharunvincent/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/dharunvincent" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
-      <a href="/cdn-cgi/l/email-protection#c5a1ada4b7b0ab85a1ada4b7b0abb3acaba6a0abb1eba6aaa8" class="contact-email reveal reveal-delay-3">
-        <span class="__cf_email__" data-cfemail="82e6eae3f0f7ecc2e6eae3f0f7ecf4ebece1e7ecf6ace1edef">[email&#160;protected]</span>
+      <a href="mailto:dharun@dharunvincent.com" class="contact-email reveal reveal-delay-3">
+        dharun@dharunvincent.com
       </a>
 
     </section>
@@ -1093,30 +1189,42 @@
       });
     }
 
-    // Hamburger menu
+    // Hamburger menu — liquid glass dropdown
     const hamburger   = document.getElementById('hamburger');
     const mobileNav   = document.getElementById('mobile-nav');
-    const mobileClose = document.getElementById('mobile-nav-close');
+    const backdrop    = document.getElementById('mobile-nav-backdrop');
 
     function openMobileNav() {
       hamburger.classList.add('open');
-      mobileNav.classList.add('open');
       hamburger.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
+      // Show backdrop first
+      backdrop.classList.add('open');
+      // Then show nav (triggers CSS transition)
+      mobileNav.style.display = 'block';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          mobileNav.classList.add('open');
+        });
+      });
     }
     function closeMobileNav() {
       hamburger.classList.remove('open');
-      mobileNav.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+      mobileNav.classList.remove('open');
+      backdrop.classList.remove('open');
+      // Hide after transition completes
+      setTimeout(() => {
+        if (!mobileNav.classList.contains('open')) {
+          mobileNav.style.display = 'none';
+        }
+      }, 280);
     }
     if (hamburger) {
-      hamburger.addEventListener('click', () => {
+      hamburger.addEventListener('click', e => {
+        e.stopPropagation();
         hamburger.classList.contains('open') ? closeMobileNav() : openMobileNav();
       });
     }
-    if (mobileClose) mobileClose.addEventListener('click', closeMobileNav);
-    if (mobileNav)   mobileNav.addEventListener('click', e => { if (e.target === mobileNav) closeMobileNav(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileNav(); });
   </script>
 </body>

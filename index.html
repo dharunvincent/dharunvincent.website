@@ -555,12 +555,13 @@
       content:''; position:absolute; inset:0; pointer-events:none;
       background:radial-gradient(ellipse 80% 80% at 50% 120%,rgba(255,107,43,.08),transparent);
     }
-    .tags-wrap { display:flex; flex-wrap:wrap; gap:.75rem; position:relative; }
+    .tags-wrap { display:flex; flex-wrap:wrap; gap:.5rem; position:relative; justify-content:flex-start; align-items:flex-start; }
     .tag {
-      padding:.625rem 1.25rem; border-radius:9999px;
+      padding:.5rem 1rem; border-radius:9999px;
       border:1px solid rgba(255,255,255,.1); background:rgba(0,0,0,.5);
-      font-size:.875rem; font-weight:500;
+      font-size:.8125rem; font-weight:500;
       transition:border-color .3s,color .3s; cursor:default;
+      white-space:nowrap;
     }
     .tag:hover { border-color:rgba(255,107,43,.5); color:var(--orange); }
 
@@ -613,18 +614,18 @@
         background:
           linear-gradient(to bottom, rgba(0,0,0,.15) 0%, rgba(0,0,0,.1) 30%, rgba(0,0,0,.6) 62%, rgba(0,0,0,.92) 75%, #000 85%) !important;
       }
-      #hero-content { padding: 0 1.25rem 1.5rem; text-align: left; }
-      #hero h1 { font-size: clamp(1.4rem, 6.5vw, 2.2rem); letter-spacing: .04em; }
-      .hero-title-sub { font-size: clamp(.875rem, 4vw, 1.1rem); }
-      #hero p.hero-desc { font-size: .8rem; max-width: 100%; margin-bottom: 1.25rem; }
+      #hero-content { padding: 0 1.25rem 0; text-align: left; }
+      #hero h1 { font-size: clamp(1.25rem, 5.5vw, 1.9rem); letter-spacing: .03em; margin-bottom: .3rem; }
+      .hero-title-sub { font-size: clamp(.8rem, 3.5vw, 1rem); margin-bottom: .6rem; }
+      #hero p.hero-desc { font-size: .78rem; max-width: 100%; margin-bottom: 1rem; line-height: 1.6; }
       .hero-btns { justify-content: flex-start; }
-      .hero-stats { gap: 1.5rem; padding-bottom: .5rem; }
-      .hero-stat-value { font-size: 1.3rem; }
-      .hero-stat-label { font-size: .5rem; }
-      .btn-primary, .btn-secondary { padding: .7rem 1.25rem; font-size: .8rem; }
+      .hero-stats { gap: 1.25rem; padding: .5rem 0 1rem; }
+      .hero-stat-value { font-size: 1.25rem; }
+      .hero-stat-label { font-size: .48rem; }
+      .btn-primary, .btn-secondary { padding: .7rem 1.25rem; font-size: .8rem; width: 100%; text-align: center; }
 
       /* Navbar — glossy liquid glass pill, full width, logo left, hamburger right */
-      #navbar { padding: .6rem .75rem 0; }
+      #navbar { padding: .6rem .75rem 0; width: 100%; left: 0; right: 0; }
       .nav-inner {
         max-width: 100%;
         margin: 0;
@@ -649,21 +650,25 @@
       }
       .nav-logo { font-size: .875rem; flex-shrink: 0; }
       .nav-logo-icon { width: 1.75rem; height: 1.75rem; font-size: .65rem; }
+      /* Force hamburger visible — overrides base display:none */
+      .hamburger { display: flex !important; }
+      .nav-links { display: none !important; }
 
       /* Hero */
       #hero h1 {
-        font-size: clamp(1.4rem, 6.5vw, 2.2rem);
-        letter-spacing: .04em;
+        font-size: clamp(1.25rem, 5.5vw, 1.9rem);
+        letter-spacing: .03em;
+        margin-bottom: .3rem;
       }
       .hero-title-sub { font-size: clamp(.875rem, 4vw, 1.1rem); }
       #hero p.hero-desc { font-size: .8rem; }
-      .hero-badge { display: inline-flex; font-size: .55rem; letter-spacing: .12em; padding: .3rem .75rem; margin-bottom: 1rem; }
+      .hero-badge { display: inline-flex; font-size: .55rem; letter-spacing: .12em; padding: .25rem .65rem; margin-bottom: .6rem; }
       .hero-stats { gap: 1.5rem; }
       .hero-stat-value { font-size: 1.4rem; }
       .hero-stat-item { min-width: 4rem; }
       .hero-stat-label { font-size: .55rem; }
       .btn-primary, .btn-secondary { padding: .75rem 1.5rem; font-size: .8125rem; width: 100%; text-align: center; }
-      .hero-btns { flex-direction: column; align-items: stretch; max-width: 20rem; margin-left: auto; margin-right: auto; }
+      .hero-btns { flex-direction: column; align-items: stretch; gap: .5rem; margin-bottom: 1.25rem; }
 
       /* Sections */
       main { padding: 2.5rem 1rem 4rem; }
@@ -698,8 +703,9 @@
       .project-content p { font-size: .75rem; }
 
       /* Skills tags */
-      #skills-section { padding: 1.75rem; border-radius: 1.5rem; }
-      .tag { font-size: .8rem; padding: .5rem 1rem; }
+      #skills-section { padding: 1.25rem; border-radius: 1.25rem; }
+      .tags-wrap { gap: .4rem; justify-content: flex-start; }
+      .tag { font-size: .7rem; padding: .4rem .8rem; white-space: nowrap; }
 
       /* Education */
       .edu-grid { grid-template-columns: 1fr; }

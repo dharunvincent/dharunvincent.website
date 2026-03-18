@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,14 +22,24 @@
       --font:        'Syne', system-ui, sans-serif;
       --mono:        'DM Mono', monospace;
     }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overscroll-behavior: none; height: 100%; }
     body {
       background: #000; color: #fff;
       font-family: var(--font);
       overflow-x: hidden;
+      overscroll-behavior: none;
+      overscroll-behavior-y: none;
     }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
+
+    /* ── Global: all headings use Syne (About font) ── */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+    }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -99,12 +109,6 @@
     }
 
     /* ── Utilities ──────────────────────────────────────── */
-    .glass {
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      background: var(--surface); border: 1px solid var(--border);
-    }
-    .glow { box-shadow: 0 0 40px -8px var(--orange-glow), 0 0 80px -24px rgba(255,107,43,.2); }
     .card {
       background: var(--surface); border: 1px solid var(--border); border-radius: 1.5rem;
       transition: transform .4s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .4s;
@@ -115,8 +119,9 @@
       box-shadow: 0 28px 56px -16px rgba(0,0,0,.7), 0 0 0 1px rgba(255,107,43,.12);
     }
     .label {
-      font-size: .65rem; text-transform: uppercase; letter-spacing: .35em;
-      color: var(--orange); font-weight: 500; margin-bottom: 2.5rem;
+      font-family: var(--font);
+      font-size: .8rem; text-transform: uppercase; letter-spacing: .3em;
+      color: var(--orange); font-weight: 600; margin-bottom: 1.75rem;
       display: flex; align-items: center; gap: .75rem;
     }
     .label::before { content:''; width:1.5rem; height:1px; background:var(--orange); }
@@ -184,14 +189,6 @@
       transition: color .2s, background .2s;
     }
     .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(255,255,255,.07); }
-    .nav-cta {
-      background: var(--orange); color: #000;
-      padding: .4rem 1.1rem; border-radius: 9999px;
-      font-size: .75rem; font-weight: 700;
-      box-shadow: 0 0 18px -4px var(--orange-glow);
-      transition: filter .2s, transform .15s; border: none;
-    }
-    .nav-cta:hover { filter: brightness(1.1); transform: scale(1.04); }
     /* ── Mobile Nav ──────────────────────────────────── */
     .hamburger {
       display: none;
@@ -299,10 +296,14 @@
     }
     #mobile-nav-backdrop.open { display: block; }
 
-    @media(max-width:767px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-    }
+
+    /* ── Hero animation classes ─────────────────────────── */
+    .anim-badge  { opacity:0; animation: fadeUp .6s ease .3s  forwards; }
+    .anim-h1     { opacity:0; animation: fadeUp .9s cubic-bezier(.22,1,.36,1) .4s forwards; }
+    .anim-sub    { opacity:0; animation: fadeUp .8s ease .55s forwards; }
+    .anim-desc   { opacity:0; animation: fadeUp .8s ease .7s  forwards; }
+    .anim-btns   { opacity:0; animation: fadeUp .7s ease .85s forwards; }
+    .anim-stats  { opacity:0; animation: fadeUp .7s ease 1s   forwards; }
 
     /* ── Hero ───────────────────────────────────────────── */
     #hero {
@@ -430,14 +431,15 @@
     @keyframes fadeIn { to{opacity:1} }
 
     /* ── Layout ─────────────────────────────────────────── */
-    main { max-width:72rem; margin:0 auto; padding:4rem 1.5rem 6rem; }
-    section { margin-bottom:9rem; scroll-margin-top: 5rem; }
+    main { max-width:72rem; margin:0 auto; padding:3rem 1.5rem 2rem; }
+    section { margin-bottom:5.5rem; scroll-margin-top: 5rem; }
     /* Offset anchor targets for fixed navbar */
     #about, #experience, #highlights, #contact, #skills-section { scroll-margin-top: 5rem; }
+    #contact { margin-bottom: 0 !important; }
 
     /* ── Marquee ────────────────────────────────────────── */
     .marquee-wrap {
-      overflow:hidden; padding:.75rem 0; margin-bottom:9rem;
+      overflow:hidden; padding:.75rem 0; margin-bottom:5rem;
       border-top:1px solid rgba(255,255,255,.05);
       border-bottom:1px solid rgba(255,255,255,.05);
     }
@@ -451,10 +453,10 @@
     .about-grid { display:grid; gap:3rem; }
     @media(min-width:768px) { .about-grid { grid-template-columns:3fr 2fr; align-items:start; } }
     #about h2 {
-      font-size:clamp(2.25rem,5vw,3.5rem); font-weight:800;
-      letter-spacing:-.03em; line-height:1.05; margin-bottom:1.25rem;
+      font-size:clamp(2.25rem,5vw,3.5rem);
+      margin-bottom:1.25rem;
     }
-    #about p { color:var(--muted); line-height:1.8; font-size:1.05rem; }
+    #about p:not(.label) { color:var(--muted); line-height:1.8; font-size:1.05rem; }
     .about-highlights { display:flex; flex-direction:column; gap:.5rem; }
     .highlight-item {
       display:flex; align-items:center; justify-content:space-between;
@@ -470,7 +472,7 @@
     .impact-grid {
       display: grid; gap: 1rem;
       grid-template-columns: repeat(4, 1fr);
-      margin-top: 3rem;
+      margin-top: 2rem;
       justify-items: center;
     }
     .impact-card {
@@ -510,7 +512,7 @@
     .exp-list { display:flex; flex-direction:column; gap:1rem; }
     .exp-card { padding:2rem; }
     .exp-header { display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:1rem; margin-bottom:1.25rem; }
-    .exp-company-name { font-size:1.4rem; font-weight:800; letter-spacing:-.02em; }
+    .exp-company-name { font-size:1.4rem; font-weight:800; line-height:1.05; }
     .exp-role { font-size:.875rem; color:var(--orange); font-weight:500; margin-top:.25rem; }
     .exp-period {
       font-family:var(--mono); font-size:.75rem; color:var(--muted);
@@ -543,7 +545,7 @@
     /* ── AI / Skills tags ───────────────────────────────── */
     #skills-section {
       border:1px solid rgba(255,107,43,.15); border-radius:2.5rem;
-      padding:3rem 3.5rem; position:relative; overflow:hidden;
+      padding:2.25rem 2.75rem; position:relative; overflow:hidden;
     }
     #skills-section::before {
       content:''; position:absolute; inset:0; pointer-events:none;
@@ -560,11 +562,63 @@
     .tag:hover { border-color:rgba(255,107,43,.5); color:var(--orange); }
 
     /* ── Education ──────────────────────────────────────── */
-    .edu-grid { display:grid; gap:1rem; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); }
-    .edu-card { padding:1.75rem; }
-    .edu-degree { font-size:1.05rem; font-weight:700; margin-bottom:.375rem; }
-    .edu-school { font-size:.875rem; color:var(--muted); margin-bottom:.625rem; }
-    .edu-cgpa { font-family:var(--mono); font-size:.8rem; color:var(--orange); }
+    /* Degree cards — prominent, structured */
+    .edu-grid {
+      display: grid; gap: 1.25rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    .edu-card { padding: 2rem; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .edu-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--orange), transparent);
+    }
+    .edu-icon {
+      width: 2.5rem; height: 2.5rem; border-radius: .75rem;
+      background: var(--orange-dim); border: 1px solid rgba(255,107,43,.2);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .edu-icon svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: var(--orange); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .edu-degree { font-size: 1.1rem; margin-bottom: .375rem; line-height: 1.3; min-height: 2.75rem; }
+    .edu-school { font-size: .8125rem; color: var(--orange); font-weight: 500; margin-bottom: .375rem; }
+    .edu-type { font-size: .7rem; color: var(--muted); font-family: var(--mono); text-transform: uppercase; letter-spacing: .1em; }
+
+    /* Course cards — lighter, list-style feel */
+    .course-section-grid {
+      display: grid; gap: 1.25rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      align-items: start;
+    }
+    .course-card {
+      padding: 1.75rem;
+      border-radius: 1.5rem;
+      background: rgba(255,107,43,.04);
+      border: 1px solid rgba(255,107,43,.15);
+      transition: border-color .3s, background .3s;
+    }
+    .course-card:hover {
+      border-color: rgba(255,107,43,.35);
+      background: rgba(255,107,43,.08);
+    }
+    .course-category {
+      font-family: var(--font);
+      font-size: .7rem; text-transform: uppercase; letter-spacing: .2em;
+      color: var(--orange); font-weight: 600; margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .course-category::before {
+      content: ''; width: 1.25rem; height: 1px; background: var(--orange);
+    }
+    .course-list { display: flex; flex-direction: column; gap: .875rem; }
+    .course-item {
+      display: flex; align-items: flex-start; gap: .75rem;
+      font-size: .9375rem; color: rgba(255,255,255,.85); line-height: 1.6;
+    }
+    .course-item::before {
+      content: '→'; color: var(--orange); font-size: .875rem;
+      flex-shrink: 0; margin-top: .15rem;
+    }
     .edu-badge {
       display:inline-block; margin-top:.875rem;
       background:var(--orange-dim); border:1px solid rgba(255,107,43,.2);
@@ -573,10 +627,10 @@
     }
 
     /* ── Contact ────────────────────────────────────────── */
-    #contact { text-align:center; padding:4rem 0; }
+    #contact { text-align:center; padding:1.5rem 0 1rem; }
     #contact h2 {
-      font-size:clamp(2.75rem,8vw,5.5rem); font-weight:800;
-      letter-spacing:-.04em; line-height:1; margin-bottom:2rem;
+      font-size:clamp(2.75rem,8vw,5.5rem);
+      margin-bottom:2rem;
     }
     #contact h2 .accent { color:var(--orange); }
     .contact-links { display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; margin-bottom:2.5rem; }
@@ -600,6 +654,8 @@
 
     /* ── Mobile Responsive ──────────────────────────────── */
     @media (max-width: 767px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex !important; }
 
       /* Hero mobile — stack photo behind full width, text at bottom */
       #hero { align-items: flex-end; min-height: 100svh; }
@@ -631,7 +687,7 @@
         /* Slim dark glass */
         backdrop-filter: blur(32px) saturate(180%);
         -webkit-backdrop-filter: blur(32px) saturate(180%);
-        background: rgba(8,8,8,0.78) !important;
+        background: rgba(8,8,8,0.78);
         border: 1px solid rgba(255,255,255,0.12);
         box-shadow:
           0 1px 0 rgba(255,255,255,0.09) inset,
@@ -661,14 +717,14 @@
       .hero-btns { flex-direction: column; align-items: stretch; gap: .5rem; margin-bottom: 1.25rem; }
 
       /* Sections */
-      main { padding: 2.5rem 1rem 4rem; }
-      section { margin-bottom: 5rem; scroll-margin-top: 4.5rem; }
+      main { padding: 2rem 1rem 1rem; }
+      section { margin-bottom: 3.5rem; scroll-margin-top: 4.5rem; }
       #about, #experience, #highlights, #contact, #skills-section { scroll-margin-top: 4.5rem; }
-      .label { font-size: .6rem; margin-bottom: 1.75rem; }
+      .label { font-size: .75rem; margin-bottom: 1.25rem; }
 
       /* About */
       #about h2 { font-size: clamp(1.75rem, 7vw, 2.5rem); }
-      #about p { font-size: .9rem; }
+      #about p:not(.label) { font-size: .9rem; }
       .impact-grid { grid-template-columns: 1fr 1fr; }
       .impact-value { font-size: 2.25rem; }
       .impact-label { font-size: .65rem; }
@@ -699,9 +755,11 @@
 
       /* Education */
       .edu-grid { grid-template-columns: 1fr; }
+      .course-section-grid { grid-template-columns: 1fr; }
       .edu-card { padding: 1.25rem; }
       .edu-degree { font-size: .9375rem; }
       .edu-school { font-size: .8rem; }
+      .course-item { font-size: .875rem; }
 
       /* Contact */
       #contact h2 { font-size: clamp(2rem, 9vw, 3rem); }
@@ -709,7 +767,7 @@
       .contact-phone { font-size: .8rem; }
 
       /* Marquee */
-      .marquee-wrap { margin-bottom: 5rem; }
+      .marquee-wrap { margin-bottom: 3rem; }
       .marquee-item { font-size: .65rem; }
 
       /* Footer */
@@ -742,7 +800,7 @@
     </div>
     <div class="mobile-nav-divider"></div>
     <div class="mobile-nav-footer">
-      <a href="mailto:dharun@dharunvincent.com" onclick="closeMobileNav()">Get in Touch</a>
+      <a href="/cdn-cgi/l/email-protection#7014181102051e3014181102051e06191e13151e045e131f1d" onclick="closeMobileNav()">Get in Touch</a>
     </div>
   </nav>
 
@@ -774,24 +832,24 @@
     <div id="hero-radial" aria-hidden="true"></div>
 
     <div id="hero-content">
-      <div class="hero-badge" style="opacity:0;animation:fadeUp .6s ease .3s forwards;">
+      <div class="hero-badge anim-badge">
         <span class="hero-badge-dot" aria-hidden="true"></span>
         Scaling Ideas into Global Realities
       </div>
 
-      <h1 style="opacity:0;animation:fadeUp .9s cubic-bezier(.22,1,.36,1) .4s forwards;">Dharun Vincent</h1>
-      <p class="hero-title-sub" style="opacity:0;animation:fadeUp .8s ease .55s forwards;">Product Manager</p>
+      <h1 class="anim-h1">Dharun Vincent</h1>
+      <p class="hero-title-sub anim-sub">Product Manager</p>
 
-      <p class="hero-desc" style="opacity:0;animation:fadeUp .8s ease .7s forwards;">
+      <p class="hero-desc anim-desc">
         7+ years building apps and features from ideation to launch across streaming, entertainment and technology. Delivered products used by millions across 70+ countries.
       </p>
 
-      <div class="hero-btns" style="opacity:0;animation:fadeUp .7s ease .85s forwards;">
+      <div class="hero-btns anim-btns">
         <a href="#experience" class="btn-primary">View Experience</a>
         <a href="#contact"    class="btn-secondary">Get in Touch</a>
       </div>
 
-      <div class="hero-stats" role="list" aria-label="Key stats" style="opacity:0;animation:fadeUp .7s ease 1s forwards;">
+      <div class="hero-stats anim-stats" role="list" aria-label="Key stats">
         <div role="listitem" class="hero-stat-item">
           <div class="hero-stat-value">7+</div>
           <div class="hero-stat-label">Years Experience</div>
@@ -1016,9 +1074,10 @@
     </section>
 
     <!-- Skills & Tools -->
-    <section id="skills-section" aria-labelledby="tools-heading">
-      <p class="label reveal">Skills & Expertise</p>
+    <section aria-labelledby="tools-heading">
+      <p class="label reveal">Skills &amp; Expertise</p>
       <h2 id="tools-heading" class="sr-only">Skills and Expertise</h2>
+      <div id="skills-section">
       <div class="tags-wrap reveal reveal-delay-1" role="list">
         <span class="tag" role="listitem">Payment Research</span>
         <span class="tag" role="listitem">Payment Optimization</span>
@@ -1037,36 +1096,52 @@
         <span class="tag" role="listitem">Google AI Essentials</span>
         <span class="tag" role="listitem">Generative AI</span>
       </div>
+      </div>
     </section>
 
-    <!-- Education & Courses -->
+    <!-- Education -->
     <section aria-labelledby="edu-heading">
-      <p class="label reveal">Education &amp; Courses</p>
-      <h2 id="edu-heading" class="sr-only">Education &amp; Courses</h2>
+      <p class="label reveal">Education</p>
+      <h2 id="edu-heading" class="sr-only">Education</h2>
       <div class="edu-grid">
         <div class="card edu-card reveal reveal-delay-1">
-          <div class="edu-degree">Master of Business Administration (MBA)</div>
-          <div class="edu-school" style="color:var(--orange);">Christ University, Bangalore</div>
+          <div class="edu-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="edu-degree">Master of Business Administration</div>
+          <div class="edu-school">Christ University, Bangalore</div>
+          <div class="edu-type">Postgraduate · MBA</div>
         </div>
         <div class="card edu-card reveal reveal-delay-2">
-          <div class="edu-degree">Bachelor of Engineering (BE)</div>
-          <div class="edu-school" style="color:var(--orange);">Sathyabama University, Chennai</div>
+          <div class="edu-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="edu-degree">Bachelor of Engineering, Civil</div>
+          <div class="edu-school">Sathyabama University, Chennai</div>
+          <div class="edu-type">Undergraduate · BE</div>
         </div>
-        <div class="card edu-card reveal reveal-delay-3">
-          <div class="edu-degree">AI &amp; Technology</div>
-          <div class="edu-school" style="color:var(--orange);">Online Courses</div>
-          <span class="edu-badge">Google AI Essentials – Coursera</span>
-          <br/>
-          <span class="edu-badge" style="margin-top:.5rem;">Generative AI – AWS Training</span>
+      </div>
+    </section>
+
+    <!-- Courses -->
+    <section aria-labelledby="courses-heading">
+      <p class="label reveal">Courses &amp; Certifications</p>
+      <h2 id="courses-heading" class="sr-only">Courses &amp; Certifications</h2>
+      <div class="course-section-grid">
+        <div class="course-card reveal reveal-delay-1">
+          <div class="course-category">AI &amp; Technology</div>
+          <div class="course-list">
+            <div class="course-item">Google AI Essentials – Coursera</div>
+            <div class="course-item">Generative AI: Art of the Possible – AWS Training</div>
+          </div>
         </div>
-        <div class="card edu-card reveal reveal-delay-4">
-          <div class="edu-degree">Product &amp; Analytics</div>
-          <div class="edu-school" style="color:var(--orange);">Online Courses</div>
-          <span class="edu-badge">Agile Project Management – Coursera</span>
-          <br/>
-          <span class="edu-badge" style="margin-top:.5rem;">Data-Driven Decision Making – Coursera</span>
-          <br/>
-          <span class="edu-badge" style="margin-top:.5rem;">A/B Testing with Google Optimize – Coursera</span>
+        <div class="course-card reveal reveal-delay-2">
+          <div class="course-category">Product &amp; Analytics</div>
+          <div class="course-list">
+            <div class="course-item">Agile Project Management – Coursera</div>
+            <div class="course-item">Data-Driven Decision Making – Coursera</div>
+            <div class="course-item">A/B Testing with Google Optimize – Coursera</div>
+          </div>
         </div>
       </div>
     </section>
@@ -1081,8 +1156,8 @@
         <a href="https://www.linkedin.com/in/dharunvincent/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://github.com/dharunvincent" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
-      <a href="mailto:dharun@dharunvincent.com" class="contact-email reveal reveal-delay-3">
-        dharun@dharunvincent.com
+      <a href="/cdn-cgi/l/email-protection#c5a1ada4b7b0ab85a1ada4b7b0abb3acaba6a0abb1eba6aaa8" class="contact-email reveal reveal-delay-3">
+        <span class="__cf_email__" data-cfemail="187c70796a6d76587c70796a6d766e71767b7d766c367b7775">[email&#160;protected]</span>
       </a>
 
     </section>
@@ -1093,7 +1168,7 @@
     <p>&copy; <span id="year"></span> Dharun Vincent R · All Rights Reserved</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
 

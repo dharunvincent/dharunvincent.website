@@ -800,7 +800,7 @@
     </div>
     <div class="mobile-nav-divider"></div>
     <div class="mobile-nav-footer">
-      <a href="/cdn-cgi/l/email-protection#7014181102051e3014181102051e06191e13151e045e131f1d" onclick="closeMobileNav()">Get in Touch</a>
+      <a id="mobile-email-link" href="#" onclick="closeMobileNav()">Get in Touch</a>
     </div>
   </nav>
 
@@ -1156,8 +1156,8 @@
         <a href="https://www.linkedin.com/in/dharunvincent/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://github.com/dharunvincent" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
-      <a href="/cdn-cgi/l/email-protection#c5a1ada4b7b0ab85a1ada4b7b0abb3acaba6a0abb1eba6aaa8" class="contact-email reveal reveal-delay-3">
-        <span class="__cf_email__" data-cfemail="187c70796a6d76587c70796a6d766e71767b7d766c367b7775">[email&#160;protected]</span>
+      <a id="contact-email-link" href="#" class="contact-email reveal reveal-delay-3">
+        <span id="contact-email-text"></span>
       </a>
 
     </section>
@@ -1209,6 +1209,25 @@
       }, { passive: true });
     }
 
+
+
+    // ── Email injection (Cloudflare-proof) ───────────────────
+    // Email is split so Cloudflare's scanner can't detect it
+    (function() {
+      var u = 'dharun';
+      var d = 'dharunvincent' + '.' + 'com';
+      var e = u + '@' + d;
+      var mailto = 'mail' + 'to:' + e;
+
+      var el = document.getElementById('contact-email-link');
+      if (el) { el.href = mailto; }
+
+      var txt = document.getElementById('contact-email-text');
+      if (txt) { txt.textContent = e; }
+
+      var mob = document.getElementById('mobile-email-link');
+      if (mob) { mob.href = mailto; }
+    })();
 
     // ── Custom cursor (mouse-only devices) ───────────────
     // Only activate on devices with a real mouse pointer

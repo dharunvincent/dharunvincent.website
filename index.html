@@ -99,7 +99,11 @@
       transition: opacity .3s, width .25s cubic-bezier(.22,1,.36,1), height .25s cubic-bezier(.22,1,.36,1), border-color .25s;
       will-change: transform;
     }
-    /* cursor:none only applied when JS confirms a real mouse exists */
+    /* cursor:none — applied immediately via CSS for mouse devices (no JS flash) */
+    @media (hover: hover) and (pointer: fine) {
+      html, body, * { cursor: none !important; }
+    }
+    /* JS class adds cursor visibility once confirmed — belt-and-suspenders */
     body.has-cursor { cursor: none; }
     body.has-cursor a,
     body.has-cursor button { cursor: none; }
@@ -580,7 +584,7 @@
       padding:.5rem 1rem; border-radius:9999px;
       border:1px solid rgba(255,255,255,.1); background:rgba(0,0,0,.5);
       font-size:.8125rem; font-weight:500;
-      transition:border-color .3s,color .3s; cursor:default;
+      transition:border-color .3s,color .3s; cursor:none;
       white-space:nowrap;
     }
     .tag:hover { border-color:rgba(255,107,43,.5); color:var(--orange); }

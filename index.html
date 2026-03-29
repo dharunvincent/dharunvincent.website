@@ -599,7 +599,7 @@
       white-space: nowrap; letter-spacing: .02em;
     }
     .impact-label {
-      font-size: .7rem; color: var(--muted);
+      font-size: .7rem; color: rgba(255,255,255,.75);
       margin-top: .75rem; line-height: 1.6;
       text-transform: uppercase; letter-spacing: .12em;
       text-align: center; max-width: 12rem;
@@ -640,7 +640,8 @@
       font-size: .875rem; color: rgba(255,255,255,.7); line-height: 1.65;
     }
     .ai-tool {
-      display: inline-flex; align-items: center; flex-shrink: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0; min-width: 6.5rem;
       font-size: .65rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em;
       padding: .2rem .6rem; border-radius: 9999px;
       white-space: nowrap;
@@ -649,17 +650,29 @@
       background: rgba(66,133,244,.15); border: 1px solid rgba(66,133,244,.3);
       color: #7aaff4;
     }
+    .ai-tool-google {
+      background: rgba(66,186,100,.15); border: 1px solid rgba(66,186,100,.3);
+      color: #6dbb85;
+    }
     .ai-tool-claude {
       background: var(--orange-dim); border: 1px solid rgba(255,107,43,.25);
       color: var(--orange);
     }
+    .ai-tool-security {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.6);
+    }
     @media (max-width: 767px) {
       .ai-builder-card { padding: 1.25rem; }
-      .ai-builder-title { font-size: 1.25rem; word-break: break-word; }
+      .ai-builder-title { font-size: 1.2rem; word-break: break-word; overflow-wrap: anywhere; }
       .ai-builder-subtitle { font-size: .775rem; }
-      .ai-builder-list li { font-size: .825rem; }
-      .ai-builder-badge { margin-left: 0; font-size: .625rem; }
-      .ai-builder-header { flex-wrap: wrap; }
+      /* Fix pill + text alignment when text wraps on narrow screens */
+      .ai-builder-list li { font-size: .8rem; align-items: flex-start; }
+      /* Reduce pill min-width on mobile so text has room to breathe */
+      .ai-tool { min-width: 5.25rem; font-size: .6rem; letter-spacing: .08em; margin-top: .15rem; }
+      .ai-builder-badge { margin-left: 0; font-size: .6rem; }
+      .ai-builder-header { flex-wrap: wrap; gap: .75rem; }
+      .ai-builder-list { gap: .75rem; }
     }
 
     /* ── Skills ─────────────────────────────────────────── */
@@ -776,11 +789,13 @@
     @media (max-width: 767px) {
       .highlights-grid { grid-template-columns: 1fr; }
       .hl-illustration { height: 110px; }
+      .hl-body { padding: 0 1rem 1rem; gap: .3rem; }
       .hl-title { font-size: .9375rem; }
       .hl-desc { font-size: .8rem; }
       .hl-role { font-size: .7rem; }
       .hl-metric-value { font-size: 1.875rem; }
       .hl-metric-label { font-size: .62rem; }
+      .hl-platform { font-size: .55rem; }
     }
 
     /* ── AI / Skills tags ───────────────────────────────── */
@@ -956,17 +971,17 @@
 
       /* Sections */
       main { padding: 2rem 1rem 1rem; }
-      section { margin-bottom: 3.5rem; scroll-margin-top: 4.5rem; }
+      section { margin-bottom: 3rem; scroll-margin-top: 4.5rem; }
       #about, #ai-builder, #experience, #highlights, #contact, #skills-section { scroll-margin-top: 4.5rem; }
       .label { font-size: .75rem; margin-bottom: 1.25rem; }
 
       /* About */
       #about h2 { font-size: clamp(1.75rem, 7vw, 2.5rem); }
-      #about p:not(.label) { font-size: .9rem; }
-      .impact-grid { grid-template-columns: 1fr 1fr; }
-      .impact-value { font-size: 2.25rem; }
-      .impact-label { font-size: .65rem; }
-      .impact-card { padding: 1.25rem 1rem; }
+      #about p:not(.label) { font-size: .875rem; }
+      .impact-grid { grid-template-columns: 1fr 1fr; gap: .75rem; }
+      .impact-value { font-size: 2rem; }
+      .impact-label { font-size: .6rem; letter-spacing: .08em; color: rgba(255,255,255,.75); }
+      .impact-card { padding: 1rem .75rem; }
 
       /* Skills */
       .skills-grid { grid-template-columns: 1fr; }
@@ -1011,6 +1026,10 @@
 
     @media (max-width: 400px) {
       .impact-grid { grid-template-columns: 1fr 1fr; }
+      main { padding: 1.5rem .75rem 1rem; }
+      .ai-tool { min-width: 4.75rem; font-size: .58rem; }
+      .ai-builder-list li { gap: .5rem; }
+      .hl-body { padding: 0 .875rem .875rem; }
     }
   </style>
 </head>
@@ -1200,110 +1219,16 @@
           <li><span class="ai-tool ai-tool-claude">Claude</span>Built the initial prototype in React with Claude, then migrated to pure HTML for performance</li>
           <li><span class="ai-tool ai-tool-claude">Claude</span>Optimized SEO metadata and structured data with Claude for better search visibility</li>
           <li><span class="ai-tool ai-tool-claude">Claude</span>Debugged and refined cross-platform issues across mobile, tablet, and desktop using Claude</li>
-          <li><span class="ai-tool ai-tool-claude">Claude</span>Instrumented Google Analytics and validated performance via Google PageSpeed Insights</li>
+          <li><span class="ai-tool ai-tool-google">Google</span>Instrumented Google Analytics and validated performance via Google PageSpeed Insights</li>
+          <li><span class="ai-tool ai-tool-security">Security</span>Security-first — CSP, HSTS, X-Frame-Options, zero external scripts.</li>
         </ul>
-      </div>
-    </section>
-
-    <!-- Core Skills -->
-    <section aria-labelledby="skills-heading">
-      <p class="label reveal">Core Skills</p>
-      <h2 id="skills-heading" class="sr-only">Core Skills</h2>
-      <div class="skills-grid">
-        <article class="card skill-card reveal reveal-delay-1">
-          <div class="skill-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-          </div>
-          <h3>Payment Strategy</h3>
-          <p>Deep expertise in payment research, optimization, and strategy — from UPI AutoPay to card tokenization and User Choice Billing.</p>
-        </article>
-        <article class="card skill-card reveal reveal-delay-2">
-          <div class="skill-icon">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3>Cross-functional Leadership</h3>
-          <p>Aligning engineering, design, legal, and business teams to execute a shared product vision on time and within scope.</p>
-        </article>
-        <article class="card skill-card reveal reveal-delay-3">
-          <div class="skill-icon">
-            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6"  y1="20" x2="6"  y2="14"/></svg>
-          </div>
-          <h3>Data-driven Decisions</h3>
-          <p>Leveraging analytics instrumentation and user behaviour data to identify engagement gaps and drive measurable product improvements.</p>
-        </article>
-        <article class="card skill-card reveal reveal-delay-4">
-          <div class="skill-icon">
-            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-          </div>
-          <h3>Product Lifecycle Management</h3>
-          <p>End-to-end ownership from ideation and roadmapping through launch, iteration, and scaling across mobile, web, and CMS.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" aria-labelledby="exp-heading">
-      <p class="label reveal">Experience</p>
-      <h2 id="exp-heading" class="sr-only">Work Experience</h2>
-      <div class="exp-list">
-
-        <!-- Robosoft / HBO Max -->
-        <div class="card exp-card reveal reveal-delay-1">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company-name">Robosoft Technologies</div>
-              <div class="exp-role">Product Manager – Live Streaming, Entertainment & Technology</div>
-            </div>
-            <span class="exp-period">July 2020 – Present</span>
-          </div>
-
-          <p style="font-size:.8rem;color:var(--orange);font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">HBO Max</p>
-          <ul class="exp-bullets" style="margin-bottom:1.5rem;">
-            <li>Launched a critical compliance feature on time, driving 1M+ monthly user interactions.</li>
-            <li>Launched offline downloads feature across 70+ countries, enabling 7M users to download over 32M assets monthly.</li>
-            <li>Owned the product roadmap and coordinated cross-functional teams to deliver high-impact features.</li>
-            <li>Introduced improved analytics instrumentation to identify engagement gaps and enhance feature performance.</li>
-          </ul>
-
-          <p style="font-size:.8rem;color:var(--orange);font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">Discovery+</p>
-          <ul class="exp-bullets" style="margin-bottom:1.5rem;">
-            <li>Implemented Card Tokenization to improve payment security and reduce fraudulent transactions.</li>
-            <li>Enabled UPI AutoPay for Discovery+ India.</li>
-            <li>Adhered to User Choice Billing (UCB) to allow users to pay through direct web transactions.</li>
-            <li>Analyzed e-Wallet landscape for Discovery+ India and prioritized bugs and features for stable releases.</li>
-          </ul>
-
-          <p style="font-size:.8rem;color:var(--orange);font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">OTTplay</p>
-          <ul class="exp-bullets">
-            <li>Integrated Razorpay and BillDesk payment gateways to enable secure and scalable monetization.</li>
-            <li>Improved the recommendation engine by analyzing user behaviour and refining ranking logic, driving a 5% engagement uplift.</li>
-            <li>Managed the full product lifecycle across mobile, web, and CMS by streamlining processes and improving team efficiency.</li>
-          </ul>
-        </div>
-
-        <!-- C-Tech Engineering -->
-        <div class="card exp-card reveal reveal-delay-2">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company-name">C-Tech Engineering Pvt Ltd</div>
-              <div class="exp-role">Site Engineer &amp; Test Analyst</div>
-            </div>
-            <span class="exp-period">October 2015 – October 2017</span>
-          </div>
-          <ul class="exp-bullets">
-            <li>Reduced scaffolding material costs by 60% through process optimization and improved construction workflows.</li>
-            <li>Supervised 20+ workmen and managed raw material calculations to ensure efficient, cost-effective construction execution.</li>
-            <li>Conducted quality assurance testing across multiple projects, ensuring material standards and structural compliance organization-wide.</li>
-          </ul>
-        </div>
-
       </div>
     </section>
 
     <!-- Product Highlights -->
     <section id="highlights" aria-labelledby="highlights-heading">
-      <p class="label reveal">Product Highlights</p>
-      <h2 id="highlights-heading" class="sr-only">Product Highlights</h2>
+      <p class="label reveal">Professional Highlights</p>
+      <h2 id="highlights-heading" class="sr-only">Professional Highlights</h2>
       <div class="highlights-grid">
 
         <!-- Card 1: R21 Age Gating -->
@@ -1540,6 +1465,102 @@
 
       </div>
     </section>
+
+    <!-- Core Skills -->
+    <section aria-labelledby="skills-heading">
+      <p class="label reveal">Core Skills</p>
+      <h2 id="skills-heading" class="sr-only">Core Skills</h2>
+      <div class="skills-grid">
+        <article class="card skill-card reveal reveal-delay-1">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <h3>Payment Strategy</h3>
+          <p>Deep expertise in payment research, optimization, and strategy — from UPI AutoPay to card tokenization and User Choice Billing.</p>
+        </article>
+        <article class="card skill-card reveal reveal-delay-2">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Cross-functional Leadership</h3>
+          <p>Aligning engineering, design, legal, and business teams to execute a shared product vision on time and within scope.</p>
+        </article>
+        <article class="card skill-card reveal reveal-delay-3">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6"  y1="20" x2="6"  y2="14"/></svg>
+          </div>
+          <h3>Data-driven Decisions</h3>
+          <p>Leveraging analytics instrumentation and user behaviour data to identify engagement gaps and drive measurable product improvements.</p>
+        </article>
+        <article class="card skill-card reveal reveal-delay-4">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <h3>Product Lifecycle Management</h3>
+          <p>End-to-end ownership from ideation and roadmapping through launch, iteration, and scaling across mobile, web, and CMS.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" aria-labelledby="exp-heading">
+      <p class="label reveal">Experience</p>
+      <h2 id="exp-heading" class="sr-only">Work Experience</h2>
+      <div class="exp-list">
+
+        <!-- Robosoft / HBO Max -->
+        <div class="card exp-card reveal reveal-delay-1">
+          <div class="exp-header">
+            <div>
+              <div class="exp-company-name">Robosoft Technologies</div>
+              <div class="exp-role">Product Manager – Live Streaming, Entertainment & Technology</div>
+            </div>
+            <span class="exp-period">July 2020 – Present</span>
+          </div>
+
+          <p style="font-size:.8rem;color:var(--orange);font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">HBO Max</p>
+          <ul class="exp-bullets" style="margin-bottom:1.5rem;">
+            <li>Launched a critical compliance feature on time, driving 1M+ monthly user interactions.</li>
+            <li>Launched offline downloads feature across 70+ countries, enabling 7M users to download over 32M assets monthly.</li>
+            <li>Owned the product roadmap and coordinated cross-functional teams to deliver high-impact features.</li>
+            <li>Introduced improved analytics instrumentation to identify engagement gaps and enhance feature performance.</li>
+          </ul>
+
+          <p style="font-size:.8rem;color:var(--orange);font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">Discovery+</p>
+          <ul class="exp-bullets" style="margin-bottom:1.5rem;">
+            <li>Implemented Card Tokenization to improve payment security and reduce fraudulent transactions.</li>
+            <li>Enabled UPI AutoPay for Discovery+ India.</li>
+            <li>Adhered to User Choice Billing (UCB) to allow users to pay through direct web transactions.</li>
+            <li>Analyzed e-Wallet landscape for Discovery+ India and prioritized bugs and features for stable releases.</li>
+          </ul>
+
+          <p style="font-size:.8rem;color:var(--orange);font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">OTTplay</p>
+          <ul class="exp-bullets">
+            <li>Integrated Razorpay and BillDesk payment gateways to enable secure and scalable monetization.</li>
+            <li>Improved the recommendation engine by analyzing user behaviour and refining ranking logic, driving a 5% engagement uplift.</li>
+            <li>Managed the full product lifecycle across mobile, web, and CMS by streamlining processes and improving team efficiency.</li>
+          </ul>
+        </div>
+
+        <!-- C-Tech Engineering -->
+        <div class="card exp-card reveal reveal-delay-2">
+          <div class="exp-header">
+            <div>
+              <div class="exp-company-name">C-Tech Engineering Pvt Ltd</div>
+              <div class="exp-role">Site Engineer &amp; Test Analyst</div>
+            </div>
+            <span class="exp-period">October 2015 – October 2017</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Reduced scaffolding material costs by 60% through process optimization and improved construction workflows.</li>
+            <li>Supervised 20+ workmen and managed raw material calculations to ensure efficient, cost-effective construction execution.</li>
+            <li>Conducted quality assurance testing across multiple projects, ensuring material standards and structural compliance organization-wide.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
 
     <!-- Skills & Tools -->
     <section aria-labelledby="tools-heading">

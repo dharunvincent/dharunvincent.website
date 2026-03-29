@@ -1830,15 +1830,15 @@
       const diff = targetY - startY;
       let startTime = null;
 
-      function easeInOutCubic(t) {
-        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
       }
 
       function step(timestamp) {
         if (!startTime) startTime = timestamp;
         const elapsed = timestamp - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        window.scrollTo(0, startY + diff * easeInOutCubic(progress));
+        window.scrollTo(0, startY + diff * easeOutCubic(progress));
         if (progress < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);

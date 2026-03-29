@@ -984,7 +984,9 @@
       /* About */
       #about h2 { font-size: clamp(1.75rem, 7vw, 2.5rem); }
       #about p:not(.label) { font-size: .875rem; }
-      .highlight-item { font-size: .8rem; padding: .75rem 1rem; }
+      .about-grid { gap: 1.75rem; }
+      .highlight-item { font-size: .8rem; padding: .75rem 1rem; transform: none !important; }
+      .highlight-item:hover { transform: none !important; }
       .impact-grid { grid-template-columns: 1fr 1fr; gap: .75rem; }
       .impact-value { font-size: 2rem; }
       .impact-label { font-size: .6rem; letter-spacing: .08em; color: rgba(255,255,255,.75); }
@@ -1000,15 +1002,16 @@
       .exp-card { padding: 1.25rem; }
       .exp-company-name { font-size: 1.15rem; }
       .exp-role { font-size: .8rem; }
-      .exp-period { font-size: .7rem; padding: .3rem .75rem; }
+      .exp-period { font-size: .7rem; padding: .3rem .75rem; white-space: normal; text-align: right; max-width: 9rem; }
       .exp-bullets li { font-size: .8rem; }
+      .exp-header { gap: .75rem; }
 
       /* Projects */
 
       /* Skills tags */
       #skills-section { padding: 1.25rem; border-radius: 1.25rem; }
       .tags-wrap { gap: .4rem; justify-content: flex-start; }
-      .tag { font-size: .7rem; padding: .4rem .8rem; white-space: nowrap; }
+      .tag { font-size: .7rem; padding: .4rem .8rem; white-space: normal; word-break: break-word; }
 
       /* Education */
       .edu-grid { grid-template-columns: 1fr; }
@@ -1020,6 +1023,8 @@
 
       /* Contact */
       #contact h2 { font-size: clamp(2rem, 9vw, 3rem); }
+      .contact-links { gap: 1rem; }
+      .contact-links a { font-size: .8rem; }
       .contact-email { font-size: .8125rem; padding: .875rem 1.5rem; word-break: break-all; }
       .contact-phone { font-size: .8rem; }
 
@@ -1822,44 +1827,6 @@
       });
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileNav(); });
-
-    // ── Custom smooth scroll for highlight pills (mobile only) ───
-    // Gives precise control over scroll speed — 650ms feels premium without being slow
-    function smoothScrollTo(targetY, duration) {
-      const startY = window.scrollY;
-      const diff = targetY - startY;
-      let startTime = null;
-
-      function easeOutCubic(t) {
-        return 1 - Math.pow(1 - t, 3);
-      }
-
-      function step(timestamp) {
-        if (!startTime) startTime = timestamp;
-        const elapsed = timestamp - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        window.scrollTo(0, startY + diff * easeOutCubic(progress));
-        if (progress < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    }
-
-    // Only intercept clicks on mobile (touch devices)
-    const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    if (isMobile) {
-      document.querySelectorAll('.highlight-item').forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href').replace('#', '');
-          const target = document.getElementById(targetId);
-          if (target) {
-            const navbarHeight = 80;
-            const targetY = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
-            smoothScrollTo(targetY, 650);
-          }
-        });
-      });
-    }
   </script>
 </body>
 </html>

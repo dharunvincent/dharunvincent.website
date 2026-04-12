@@ -83,18 +83,15 @@
   <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
   <!-- Referrer policy — doesn't leak your URL to external sites -->
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <!-- Content Security Policy — only allows resources from trusted sources -->
-  <!-- Blocks any injected scripts, styles, or external content not listed here -->
+  <!-- Content Security Policy — whitelists Clarity, Sentry, Google Fonts, and inline styles/scripts -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://www.clarity.ms https://c.clarity.ms https://js-de.sentry-cdn.com;
+    script-src 'self' 'unsafe-inline' https://www.clarity.ms https://js-de.sentry-cdn.com https://browser.sentry-cdn.com;
+    connect-src 'self' https://www.clarity.ms https://*.clarity.ms https://*.sentry.io https://o*.ingest.sentry.io https://o*.ingest.de.sentry.io;
+    img-src 'self' data: https://www.clarity.ms https://*.clarity.ms;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' data: https://dharunvincent.com https://images.unsplash.com https://picsum.photos https://www.clarity.ms https://c.clarity.ms;
-    connect-src 'self' https://www.clarity.ms https://c.clarity.ms https://e.clarity.ms https://de.ingest.sentry.io https://js-de.sentry-cdn.com;
-    frame-ancestors 'none';
-    base-uri 'self';
-    form-action 'self';
+    worker-src 'self' blob:;
   " />
 
 
@@ -1282,7 +1279,7 @@
     <p>&copy; <span id="year"></span> Dharun Vincent R · All Rights Reserved</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Hide native cursor immediately on mouse devices

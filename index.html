@@ -87,11 +87,11 @@
   <!-- Blocks any injected scripts, styles, or external content not listed here -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://www.clarity.ms https://js-de.sentry-cdn.com;
+    script-src 'self' 'unsafe-inline' https://www.clarity.ms https://c.clarity.ms https://js-de.sentry-cdn.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' data: https://dharunvincent.com https://images.unsplash.com https://picsum.photos https://www.clarity.ms;
-    connect-src 'self' https://www.clarity.ms https://e.clarity.ms https://de.ingest.sentry.io;
+    img-src 'self' data: https://dharunvincent.com https://images.unsplash.com https://picsum.photos https://www.clarity.ms https://c.clarity.ms;
+    connect-src 'self' https://www.clarity.ms https://c.clarity.ms https://e.clarity.ms https://de.ingest.sentry.io https://js-de.sentry-cdn.com;
     frame-ancestors 'none';
     base-uri 'self';
     form-action 'self';

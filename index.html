@@ -98,11 +98,11 @@
   <!-- Blocks any injected scripts, styles, or external content not listed here -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline';
+    script-src 'self' 'unsafe-inline' https://www.clarity.ms https://c.clarity.ms https://js-de.sentry-cdn.com https://browser.sentry-cdn.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' data: https://dharunvincent.com https://images.unsplash.com https://picsum.photos;
-    connect-src 'self';
+    img-src 'self' data: https://dharunvincent.com https://images.unsplash.com https://picsum.photos https://www.clarity.ms https://c.clarity.ms;
+    connect-src 'self' https://www.clarity.ms https://*.clarity.ms https://*.sentry.io https://o*.ingest.sentry.io https://o*.ingest.de.sentry.io;
     frame-ancestors 'none';
     base-uri 'self';
     form-action 'self';
@@ -1047,6 +1047,21 @@
       .hl-body { padding: 0 .875rem .875rem; }
     }
   </style>
+  <!-- ── Microsoft Clarity — User behaviour tracking ───── -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wagqxp6f56");
+  </script>
+
+  <!-- ── Sentry — Bug & error tracking ─────────────────── -->
+  <script
+    src="https://js-de.sentry-cdn.com/5b394f979db79d4cb00a23172707d721.min.js"
+    crossorigin="anonymous"
+  ></script>
+
 </head>
 <body>
 

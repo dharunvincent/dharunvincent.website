@@ -312,6 +312,9 @@
         overflow-wrap: anywhere;
         white-space: normal;
       }
+      /* Hide icon and status badge on mobile — cleaner card header */
+      .project-icon { display: none; }
+      .project-status { display: none; }
 
       .project-body { padding: 0 1.25rem 1.5rem; gap: 1.75rem; }
       .project-icon { width: 2.75rem; height: 2.75rem; border-radius: .875rem; flex-shrink: 0; }
@@ -457,7 +460,7 @@
             </svg>
           </div>
           <div>
-            <h2 class="project-name">dharunvincent.com</h2>
+            <h2 class="project-name">My Website</h2>
             <p class="project-tagline">A live, SEO-optimised portfolio — built entirely with AI</p>
           </div>
         </div>

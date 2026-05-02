@@ -187,6 +187,25 @@
       }
       /* Reduced bottom padding — pushes content lower so it clears the chin area */
       #hero-content { padding: 0 1.25rem 2.5rem; }
+      /* Hide primary CTA on initial mobile load — revealed by JS on scroll */
+      #view-exp-btn {
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border: none;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+      }
+      /* JS adds this class when user scrolls > 50px */
+      #view-exp-btn.show-on-scroll {
+        max-height: 60px;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        opacity: 1;
+        pointer-events: auto;
+      }
       #hero h1 { font-size: clamp(1.25rem, 5.5vw, 1.9rem); letter-spacing: .03em; margin-bottom: .3rem; }
       .hero-title-sub { font-size: clamp(.875rem, 4vw, 1.1rem); }
       #hero p.hero-desc { font-size: .8rem; }
@@ -291,7 +310,7 @@
       </p>
 
       <div class="hero-btns anim-btns">
-        <a href="#experience" class="btn-primary">View Experience</a>
+        <a href="#experience" id="view-exp-btn" class="btn-primary">View Experience</a>
         <a href="#contact"    class="btn-secondary">Get in Touch</a>
       </div>
 
@@ -413,7 +432,7 @@
             </svg>
           </div>
           <div class="vibe-preview-body">
-            <h3 class="vibe-preview-title">dharunvincent.com</h3>
+            <h3 class="vibe-preview-title">My Website</h3>
             <p class="vibe-preview-desc">
               Built this entire portfolio — from concept to a live, SEO-optimised website —
               without writing a single line of code manually. Designed, developed, and deployed

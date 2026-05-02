@@ -169,8 +169,21 @@
     const textEl = document.getElementById('contact-email-text');
     if (textEl) textEl.textContent = e;
 
-    const mobEl = document.getElementById('mobile-email-link');
-    if (mobEl) mobEl.href = mailto;
-  })();
+
+  /* ── View Experience button — hide on mobile load, reveal on scroll ── */
+  // Prevents hero text from overlapping the background photo on small screens.
+  // Only activates on mobile (≤767px). Adds .show-on-scroll class after 50px scroll.
+  document.addEventListener('DOMContentLoaded', () => {
+    const viewExpBtn = document.getElementById('view-exp-btn');
+    if (viewExpBtn && window.innerWidth <= 767) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          viewExpBtn.classList.add('show-on-scroll');
+        } else {
+          viewExpBtn.classList.remove('show-on-scroll');
+        }
+      }, { passive: true });
+    }
+  });
 
 })();

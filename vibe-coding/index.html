@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- ── SEO — Vibe Coding page ───────────────────────────── -->
+  <meta name="description" content="See how Dharun Vincent builds real products using AI — from a portfolio website to a cross-platform food safety app — without writing a single line of code." />
+  <meta name="keywords" content="Dharun Vincent, Vibe Coding, AI Product Builder, build with AI, no-code AI, Claude AI, Flutter, Uncle John app, food safety app, AI product development, product management AI" />
+  <meta name="author" content="Dharun Vincent R" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dharunvincent.com/vibe-coding/" />
+  <title>Product Building & Vibe Coding – Dharun Vincent | AI-Built Projects</title>
+
+  <!-- ── Open Graph ───────────────────────────────────────── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Product Building & Vibe Coding – Dharun Vincent" />
+  <meta property="og:description" content="Real products built entirely with AI. See the tools, process, and outcomes behind each project." />
+  <meta property="og:url" content="https://dharunvincent.com/vibe-coding/" />
+  <meta property="og:site_name" content="Dharun Vincent" />
+  <meta property="og:image" content="https://dharunvincent.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- ── Twitter Card ─────────────────────────────────────── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Product Building & Vibe Coding – Dharun Vincent" />
+  <meta name="twitter:description" content="Real products built entirely with AI — no code, all strategy." />
+  <meta name="twitter:image" content="https://dharunvincent.com/og-image.png" />
+  <meta name="twitter:site" content="@dharunvincent" />
+
+  <!-- ── Structured Data ──────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Product Building & Vibe Coding",
+    "description": "A showcase of AI-built products by Dharun Vincent — a product manager building real apps and websites using AI, with zero traditional coding.",
+    "url": "https://dharunvincent.com/vibe-coding/",
+    "author": {
+      "@type": "Person",
+      "name": "Dharun Vincent R",
+      "url": "https://dharunvincent.com"
+    }
+  }
+  </script>
+
+  <!-- ── Security Headers ──────────────────────────────────── -->
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- ── Favicons ──────────────────────────────────────────── -->
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,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" />
+  <link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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" />
+  <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- ── Fonts ─────────────────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@600;700&display=swap"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
+  </noscript>
+
+  <!-- ── Shared stylesheet ─────────────────────────────────── -->
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <!-- ── Page-specific styles ──────────────────────────────── -->
+  <style>
+    /* ── Page hero (inner page — no full-screen photo) ─────── */
+    .page-hero {
+      padding: 8rem 1.5rem 4rem;
+      max-width: 72rem; margin: 0 auto;
+      position: relative;
+    }
+    /* Subtle orange radial glow behind the title */
+    .page-hero::before {
+      content: '';
+      position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse at center, rgba(255,107,43,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero-label {
+      font-family: var(--mono); font-size: .75rem;
+      text-transform: uppercase; letter-spacing: .3em;
+      color: var(--orange); margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .page-hero-label::before { content: ''; width: 1.5rem; height: 1px; background: var(--orange); }
+    .page-hero h1 {
+      font-family: 'Orbitron', var(--font);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700; letter-spacing: .04em;
+      text-transform: uppercase; margin-bottom: 1.25rem;
+      line-height: 1.1;
+    }
+    .page-hero-desc {
+      font-size: clamp(.95rem, 2vw, 1.15rem);
+      color: var(--muted); max-width: 42rem; line-height: 1.8;
+    }
+
+    /* ── Back link ───────────────────────────────────────────── */
+    .back-link {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .8rem; color: var(--muted); margin-bottom: 2rem;
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--orange); }
+    .back-link svg { width: .85rem; height: .85rem; stroke: currentColor; }
+
+    /* ── Projects container ───────────────────────────────────── */
+    .projects-container {
+      max-width: 72rem; margin: 0 auto;
+      padding: 0 1.5rem 6rem;
+      display: flex; flex-direction: column; gap: 3.5rem;
+    }
+
+    /* ── Individual project card ──────────────────────────────── */
+    .project-card {
+      border-radius: 2rem;
+      background: var(--surface); border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color .4s;
+    }
+    .project-card:hover { border-color: rgba(255,107,43,.3); }
+
+    /* Orange top accent line */
+    .project-card::before {
+      content: ''; display: block; height: 3px;
+      background: linear-gradient(90deg, var(--orange), rgba(255,107,43,.3), transparent);
+    }
+
+    /* ── Card header ─────────────────────────────────────────── */
+    .project-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; flex-wrap: wrap;
+      gap: 1.25rem; padding: 2rem 2rem 1.5rem;
+    }
+    .project-header-left { display: flex; align-items: center; gap: 1.25rem; }
+    .project-icon {
+      width: 3.5rem; height: 3.5rem; border-radius: 1.1rem; flex-shrink: 0;
+      background: var(--orange-dim); border: 1px solid rgba(255,107,43,.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .project-icon svg {
+      width: 1.6rem; height: 1.6rem;
+      stroke: var(--orange); fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .project-name {
+      font-size: clamp(1.3rem, 3vw, 1.75rem); font-weight: 800;
+      letter-spacing: -.03em; margin-bottom: .25rem;
+    }
+    .project-tagline { font-size: .875rem; color: var(--orange); font-weight: 500; }
+    .project-status {
+      padding: .35rem 1rem; border-radius: 9999px;
+      font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .project-status.live   { background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.3); color: #4ade80; }
+    .project-status.in-dev { background: var(--orange-dim);  border: 1px solid rgba(255,107,43,.3); color: var(--orange); }
+
+    /* ── Card body sections ──────────────────────────────────── */
+    .project-body { padding: 0 2rem 2rem; display: flex; flex-direction: column; gap: 2.25rem; }
+
+    /* Divider between sections */
+    .project-section { border-top: 1px solid var(--border); padding-top: 2rem; }
+
+    .project-section-title {
+      font-size: .7rem; text-transform: uppercase; letter-spacing: .28em;
+      color: var(--orange); font-weight: 600; margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .project-section-title::before { content: ''; width: 1rem; height: 1px; background: var(--orange); }
+
+    /* ── Summary section ─────────────────────────────────────── */
+    .project-summary {
+      font-size: 1rem; color: rgba(255,255,255,.8);
+      line-height: 1.85; max-width: 70ch;
+    }
+
+    /* ── Tools section ───────────────────────────────────────── */
+    .tools-grid {
+      display: flex; flex-wrap: wrap; gap: .6rem;
+    }
+    /* Tool badge: larger than the inline ai-tool badges */
+    .tool-badge {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .45rem 1rem; border-radius: 9999px;
+      font-size: .8rem; font-weight: 600;
+      border: 1px solid; white-space: nowrap;
+      transition: filter .2s;
+    }
+    .tool-badge:hover { filter: brightness(1.15); }
+    .tool-badge-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    /* Colour variants */
+    .tb-claude   { background: rgba(255,107,43,.1);  border-color: rgba(255,107,43,.3);  color: var(--orange); }
+    .tb-claude   .tool-badge-dot { background: var(--orange); }
+    .tb-gemini   { background: rgba(66,133,244,.1);  border-color: rgba(66,133,244,.3);  color: #7aaff4; }
+    .tb-gemini   .tool-badge-dot { background: #7aaff4; }
+    .tb-google   { background: rgba(66,186,100,.1);  border-color: rgba(66,186,100,.3);  color: #6dbb85; }
+    .tb-google   .tool-badge-dot { background: #6dbb85; }
+    .tb-flutter  { background: rgba(84,182,252,.1);  border-color: rgba(84,182,252,.3);  color: #54b6fc; }
+    .tb-flutter  .tool-badge-dot { background: #54b6fc; }
+    .tb-firebase { background: rgba(255,196,0,.1);   border-color: rgba(255,196,0,.3);   color: #ffc400; }
+    .tb-firebase .tool-badge-dot { background: #ffc400; }
+    .tb-github   { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.2); color: rgba(255,255,255,.75); }
+    .tb-github   .tool-badge-dot { background: rgba(255,255,255,.6); }
+    .tb-sentry   { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.2); color: rgba(255,255,255,.75); }
+    .tb-sentry   .tool-badge-dot { background: rgba(255,255,255,.6); }
+    .tb-clarity  { background: rgba(130,80,255,.1);  border-color: rgba(130,80,255,.3);  color: #a78bfa; }
+    .tb-clarity  .tool-badge-dot { background: #a78bfa; }
+
+    /* ── Dev process: flow diagram ───────────────────────────── */
+    .process-flow {
+      display: flex; flex-wrap: wrap;
+      gap: 0; align-items: stretch;
+    }
+    .process-step {
+      display: flex; align-items: center; gap: 0;
+      flex: 1; min-width: 160px;
+    }
+    .process-step-inner {
+      flex: 1;
+      background: rgba(255,107,43,.04);
+      border: 1px solid rgba(255,107,43,.15);
+      border-radius: 1rem; padding: 1rem 1.25rem;
+      display: flex; flex-direction: column; gap: .35rem;
+      transition: background .3s, border-color .3s;
+    }
+    .process-step-inner:hover {
+      background: rgba(255,107,43,.09);
+      border-color: rgba(255,107,43,.35);
+    }
+    .process-step-num {
+      font-family: var(--mono); font-size: .65rem;
+      color: var(--orange); opacity: .7; letter-spacing: .1em;
+    }
+    .process-step-label {
+      font-size: .9rem; font-weight: 700; color: #fff;
+    }
+    .process-step-tool {
+      font-size: .75rem; color: var(--muted); line-height: 1.5;
+    }
+    /* Arrow connector between steps */
+    .process-arrow {
+      padding: 0 .5rem; color: rgba(255,107,43,.4);
+      font-size: 1.1rem; flex-shrink: 0; align-self: center;
+    }
+    /* Hide last arrow */
+    .process-step:last-child .process-arrow { display: none; }
+
+    /* ── Dev process: narrative text ─────────────────────────── */
+    .process-narrative {
+      font-size: .9375rem; color: rgba(255,255,255,.72);
+      line-height: 1.85; margin-top: 1.5rem;
+    }
+    .process-narrative strong { color: #fff; font-weight: 600; }
+
+    /* ── Outcome section ─────────────────────────────────────── */
+    .outcome-grid {
+      display: grid; gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    .outcome-card {
+      background: rgba(255,107,43,.05);
+      border: 1px solid rgba(255,107,43,.18);
+      border-radius: 1.25rem; padding: 1.5rem 1.25rem;
+      display: flex; flex-direction: column; gap: .5rem;
+      transition: background .3s, border-color .3s;
+    }
+    .outcome-card:hover {
+      background: rgba(255,107,43,.1);
+      border-color: rgba(255,107,43,.35);
+    }
+    .outcome-icon {
+      font-size: 1.5rem; margin-bottom: .25rem;
+    }
+    .outcome-title {
+      font-size: .9rem; font-weight: 700; color: #fff;
+    }
+    .outcome-desc {
+      font-size: .8125rem; color: var(--muted); line-height: 1.6;
+    }
+
+    /* ── Mobile responsive — Vibe Coding page ────────────────── */
+    @media (max-width: 767px) {
+      /* Bug 2: centre-align all page hero text on mobile */
+      .page-hero { padding: 6rem 1.25rem 2.5rem; text-align: center; }
+      .page-hero-label { justify-content: center; }
+      .page-hero h1 { font-size: clamp(1.5rem, 6vw, 2.2rem); }
+      .page-hero-desc { margin: 0 auto; text-align: center; }
+      .back-link { display: inline-flex; }
+
+      .projects-container { padding: 0 1rem 4rem; gap: 2.5rem; }
+
+      /* Bug 5: prevent project name overflowing card on mobile */
+      .project-header { padding: 1.5rem 1.25rem 1rem; flex-wrap: wrap; }
+      .project-header-left { min-width: 0; flex: 1; }
+      .project-name {
+        font-size: 1.1rem;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        white-space: normal;
+      }
+      /* Hide icon and status badge on mobile — cleaner card header */
+      .project-icon { display: none; }
+      .project-status { display: none; }
+
+      .project-body { padding: 0 1.25rem 1.5rem; gap: 1.75rem; }
+      .project-icon { width: 2.75rem; height: 2.75rem; border-radius: .875rem; flex-shrink: 0; }
+      .project-icon svg { width: 1.25rem; height: 1.25rem; }
+
+      /* Bug 3: tools grid — allow wrapping, smaller badges on mobile */
+      .tools-grid { gap: .5rem; }
+      .tool-badge { font-size: .75rem; padding: .4rem .85rem; white-space: nowrap; }
+
+      /* Bug 4: process flow — clean vertical stack, no broken horizontal layout */
+      .process-flow {
+        flex-direction: column;
+        gap: 0;
+      }
+      .process-step {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+      }
+      .process-step-inner {
+        width: 100%;
+      }
+      /* Arrow points down between steps */
+      .process-arrow {
+        transform: none;
+        padding: .35rem 0 .35rem 1.25rem;
+        align-self: flex-start;
+        font-size: 1rem;
+        color: rgba(255,107,43,.5);
+      }
+
+      /* Outcome grid — 2 cols on mobile */
+      .outcome-grid { grid-template-columns: 1fr 1fr; }
+
+      /* Summary text — slightly smaller for readability */
+      .project-summary { font-size: .9375rem; }
+      .process-narrative { font-size: .875rem; }
+    }
+
+    @media (max-width: 400px) {
+      .outcome-grid { grid-template-columns: 1fr; }
+      .tool-badge { font-size: .7rem; padding: .35rem .75rem; }
+      .project-name { font-size: 1rem; }
+    }
+  </style>
+
+  <!-- ── Analytics: Microsoft Clarity ─────────────────────── -->
+  <!-- ── Microsoft Clarity — User behaviour tracking ───── -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wagqxp6f56");
+  </script>
+
+  <!-- ── Error tracking: Sentry ────────────────────────────── -->
+  <script
+    src="https://js-de.sentry-cdn.com/5b394f979db79d4cb00a23172707d721.min.js"
+    crossorigin="anonymous"
+  ></script>
+
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div id="cursor-dot"  aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Mobile nav backdrop -->
+  <div id="mobile-nav-backdrop" onclick="closeMobileNav()"></div>
+
+  <!-- ── Mobile nav ─────────────────────────────────────────── -->
+  <nav id="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-links">
+      <a href="../vibe-coding/" onclick="closeMobileNav()">
+        <span class="nav-num">01</span>Vibe Coding
+      </a>
+      <a href="../blogs/" onclick="closeMobileNav()">
+        <span class="nav-num">02</span>My Blogs
+      </a>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-footer">
+      <a href="../#contact" onclick="closeMobileNav()">Get in Touch</a>
+    </div>
+  </nav>
+
+  <!-- ── Desktop Navbar ─────────────────────────────────────── -->
+  <nav id="navbar" aria-label="Main navigation">
+    <div class="nav-inner" id="nav-inner">
+      <a href="../" class="nav-logo" aria-label="Dharun Vincent – home">
+        <img src="data:image/png;base64,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"
+          alt="Dharun Vincent logo" class="nav-logo-img" width="28" height="28" />
+        Dharun Vincent
+      </a>
+      <div class="nav-links" role="list">
+        <!-- Active state applied via CSS class since this is the Vibe Coding page -->
+        <a href="../vibe-coding/" role="listitem" class="active">Vibe Coding</a>
+        <a href="../blogs/"       role="listitem">My Blogs</a>
+        <a href="../#contact"     role="listitem">Contact</a>
+      </div>
+      <button class="hamburger" id="hamburger"
+        aria-label="Open navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Page Hero ──────────────────────────────────────────── -->
+  <div class="page-hero">
+    <a href="../" class="back-link" aria-label="Back to home">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      Back to Home
+    </a>
+    <p class="page-hero-label">Product Building &amp; Vibe Coding</p>
+    <h1 class="reveal">Building Real Products<br>with AI</h1>
+    <p class="page-hero-desc reveal reveal-delay-1">
+      I build real, working products using AI as my primary tool — no traditional coding required.
+      Here's a look at what I've built, how I built it, and what each one proves is possible
+      for a product manager who thinks like a builder.
+    </p>
+  </div>
+
+  <!-- ── Projects ───────────────────────────────────────────── -->
+  <main class="projects-container" id="main-content">
+
+    <!-- ════════════════════════════════════════════════════════
+         PROJECT 1: dharunvincent.com
+         ════════════════════════════════════════════════════════ -->
+    <article class="project-card reveal">
+
+      <div class="project-header">
+        <div class="project-header-left">
+          <div class="project-icon">
+            <!-- Globe / web icon -->
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div>
+            <h2 class="project-name">My Website</h2>
+            <p class="project-tagline">A live, SEO-optimised portfolio — built entirely with AI</p>
+          </div>
+        </div>
+        <span class="project-status live">Live</span>
+      </div>
+
+      <div class="project-body">
+
+        <!-- 1. Summary -->
+        <section class="project-section" aria-label="Project summary">
+          <p class="project-section-title">Summary</p>
+          <p class="project-summary">
+            This portfolio website is both the product and the proof. The goal was to build a
+            professional, high-performance personal website that showcases my work as a product
+            manager and positions me as an AI Product Builder — without relying on a developer
+            or a website builder template. Every design decision, every line of code, and every
+            SEO optimisation was directed by me and executed by AI. The result is a site that
+            loads fast, ranks in search, tracks user behaviour, and looks nothing like a template.
+          </p>
+        </section>
+
+        <!-- 2. Tools -->
+        <section class="project-section" aria-label="Tools used">
+          <p class="project-section-title">Tools Used</p>
+          <div class="tools-grid">
+            <span class="tool-badge tb-gemini"><span class="tool-badge-dot"></span>Gemini</span>
+            <span class="tool-badge tb-claude"><span class="tool-badge-dot"></span>Claude AI</span>
+            <span class="tool-badge tb-google"><span class="tool-badge-dot"></span>Google Analytics</span>
+            <span class="tool-badge tb-google"><span class="tool-badge-dot"></span>Google PageSpeed</span>
+            <span class="tool-badge tb-clarity"><span class="tool-badge-dot"></span>Microsoft Clarity</span>
+            <span class="tool-badge tb-sentry"><span class="tool-badge-dot"></span>Sentry</span>
+            <span class="tool-badge tb-github"><span class="tool-badge-dot"></span>GitHub</span>
+            <span class="tool-badge tb-github"><span class="tool-badge-dot"></span>Netlify</span>
+          </div>
+        </section>
+
+        <!-- 3. Development Process -->
+        <section class="project-section" aria-label="Development process">
+          <p class="project-section-title">Development Process</p>
+
+          <!-- Visual flow diagram -->
+          <div class="process-flow" role="list" aria-label="Build stages">
+            <div class="process-step" role="listitem">
+              <div class="process-step-inner">
+                <span class="process-step-num">01</span>
+                <span class="process-step-label">Design</span>
+                <span class="process-step-tool">Gemini — Layout & visual identity</span>
+              </div>
+              <span class="process-arrow" aria-hidden="true">→</span>
+            </div>
+            <div class="process-step" role="listitem">
+              <div class="process-step-inner">
+                <span class="process-step-num">02</span>
+                <span class="process-step-label">Prototype</span>
+                <span class="process-step-tool">Claude — React prototype, then HTML migration</span>
+              </div>
+              <span class="process-arrow" aria-hidden="true">→</span>
+            </div>
+            <div class="process-step" role="listitem">
+              <div class="process-step-inner">
+                <span class="process-step-num">03</span>
+                <span class="process-step-label">SEO</span>
+                <span class="process-step-tool">Claude — Metadata, schema, Open Graph</span>
+              </div>
+              <span class="process-arrow" aria-hidden="true">→</span>
+            </div>
+            <div class="process-step" role="listitem">
+              <div class="process-step-inner">
+                <span class="process-step-num">04</span>
+                <span class="process-step-label">QA & Debug</span>
+                <span class="process-step-tool">Claude — Cross-device bugs, performance tuning</span>
+              </div>
+              <span class="process-arrow" aria-hidden="true">→</span>
+            </div>
+            <div class="process-step" role="listitem">
+              <div class="process-step-inner">
+                <span class="process-step-num">05</span>
+                <span class="process-step-label">Deploy</span>
+                <span class="process-step-tool">GitHub + Netlify — CI/CD pipeline</span>
+              </div>
+              <span class="process-arrow" aria-hidden="true">→</span>
+            </div>
+          </div>
+
+          <!-- Narrative -->
+          <p class="process-narrative">
+            I started with a brief to Gemini: design a dark, minimal portfolio with an orange
+            accent that feels premium but not corporate. Gemini gave me the visual direction —
+            layout, spacing logic, and the black-and-orange palette. Then I moved to Claude to
+            turn that direction into code. We first built a React prototype, but after testing
+            performance I made the call to <strong>migrate to pure HTML and CSS</strong> — no
+            framework overhead, no JavaScript bundle, just fast-loading static files.
+            <br><br>
+            Claude then helped me instrument the full SEO stack: metadata, Twitter cards,
+            Open Graph previews, structured data for Google rich results, and canonical URLs.
+            The entire QA process — finding mobile bugs, fixing layout shifts, and tuning
+            animations — was also done in conversation with Claude. I described what I saw,
+            Claude fixed it. No Stack Overflow, no developer. Just clear thinking and precise
+            prompting.
+          </p>
+        </section>
+
+        <!-- 4. Outcome -->
+        <section class="project-section" aria-label="Project outcome">
+          <p class="project-section-title">Outcome</p>
+          <div class="outcome-grid">
+            <div class="outcome-card">
+              <div class="outcome-icon">🌐</div>
+              <div class="outcome-title">Live Platform</div>
+              <div class="outcome-desc">A professional digital presence that shows, not just tells, what AI-powered product management looks like.</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-icon">🔍</div>
+              <div class="outcome-title">Search Visible</div>
+              <div class="outcome-desc">Structured data, canonical URLs, and optimised metadata that help the site rank for relevant search queries.</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-icon">📊</div>
+              <div class="outcome-title">Data Instrumented</div>
+              <div class="outcome-desc">Google Analytics, Microsoft Clarity, and Sentry give real-time insight into user behaviour and errors.</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-icon">🔒</div>
+              <div class="outcome-title">Security-first</div>
+              <div class="outcome-desc">CSP headers, HSTS, X-Frame-Options, and zero external runtime scripts — built safe from day one.</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </article>
+
+    <!-- ════════════════════════════════════════════════════════
+         PROJECT 2: Uncle John — Food Safety App
+         ════════════════════════════════════════════════════════ -->
+    <article class="project-card reveal reveal-delay-1">
+
+      <div class="project-header">
+        <div class="project-header-left">
+          <div class="project-icon">
+            <!-- Mobile app icon -->
+            <svg viewBox="0 0 24 24">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+              <line x1="12" y1="18" x2="12.01" y2="18"/>
+            </svg>
+          </div>
+          <div>
+            <h2 class="project-name">Uncle John</h2>
+            <p class="project-tagline">A food safety app built without writing a single line of code</p>
+          </div>
+        </div>
+        <span class="project-status in-dev">In Development</span>
+      </div>
+
+      <div class="project-body">
+
+        <!-- 1. Summary -->
+        <section class="project-section" aria-label="Project summary">
+          <p class="project-section-title">Summary</p>
+          <p class="project-summary">
+            Uncle John is a cross-platform iOS and Android app that helps everyday people make
+            safer food choices. Users photograph any ingredient label and the app instantly
+            delivers a colour-coded health risk report — green, yellow, or red — based on a
+            database of 529 ingredients. The app uses warm, non-clinical language in the voice
+            of a caring uncle who wants you to eat better. The core thesis behind Uncle John
+            is that a product manager, with no coding knowledge, can ship a real, working
+            mobile app by using AI as the primary development tool.
+          </p>
+        </section>
+
+        <!-- 2. Tools -->
+        <section class="project-section" aria-label="Tools used">
+          <p class="project-section-title">Tools Used</p>
+          <div class="tools-grid">
+            <span class="tool-badge tb-claude"><span class="tool-badge-dot"></span>Claude AI</span>
+            <span class="tool-badge tb-flutter"><span class="tool-badge-dot"></span>Flutter</span>
+            <span class="tool-badge tb-google"><span class="tool-badge-dot"></span>Google ML Kit (OCR)</span>
+            <span class="tool-badge tb-github"><span class="tool-badge-dot"></span>GitHub</span>
+            <span class="tool-badge tb-firebase"><span class="tool-badge-dot"></span>JSON Ingredient DB</span>
+          </div>
+        </section>
+
+        <!-- 3. Development Process -->
+        <section class="project-section" aria-label="Development process">
+          <p class="project-section-title">Development Process</p>
+
+          <!-- Visual flow diagram -->
+          <div class="process-flow" role="list" aria-label="Build stages">
+            <div class="process-step" role="listitem">
+              <div class="process-step-inner">
+                <span class="process-step-num">01</span>
+                <span class="process-step-label">Concept</span>
+                <span class="process-step-tool">Claude — Problem definition, feature scoping, V1 lock</span>
+              </div>
+              <span class="process-arrow" aria-hidden="true">→</span>
+            </div>
+            <div class="process-step" role="listitem">
+              <div class="process-step-inner">
+                <span class="process-step-num">02</span>
+                <span class="process-step-label">Tech Stack</span>
+                <span class="process-step-tool">Claude — Flutter chosen for iOS + Android from one codebase</span>
+              </div>
+              <span class="process-arrow" aria-hidden="true">→</span>
+            </div>
+            <div class="process-step" role="listitem">
+              <div class="process-step-inner">
+                <span class="process-step-num">03</span>
+                <span class="process-step-label">OCR Engine</span>
+                <span class="process-step-tool">Google ML Kit — on-device text recognition, no API cost</span>
+              </div>
+              <span class="process-arrow" aria-hidden="true">→</span>
+            </div>
+            <div class="process-step" role="listitem">
+              <div class="process-step-inner">
+                <span class="process-step-num">04</span>
+                <span class="process-step-label">Analysis</span>
+                <span class="process-step-tool">Rule-based engine — 529-ingredient JSON database</span>
+              </div>
+              <span class="process-arrow" aria-hidden="true">→</span>
+            </div>
+            <div class="process-step" role="listitem">
+              <div class="process-step-inner">
+                <span class="process-step-num">05</span>
+                <span class="process-step-label">Build</span>
+                <span class="process-step-tool">Claude — All 11 core Flutter files generated via AI</span>
+              </div>
+              <span class="process-arrow" aria-hidden="true">→</span>
+            </div>
+          </div>
+
+          <!-- Narrative -->
+          <p class="process-narrative">
+            Uncle John started as a product brief I wrote with Claude's help — defining the
+            problem, the user, the feature set, and the boundaries of V1. <strong>V1 features
+            are deliberately locked</strong>: scan, analyse, report. Scan history, barcode
+            scanning, user accounts, and AI analysis are explicitly deferred to future versions.
+            That discipline is the product management at work.
+            <br><br>
+            The tech stack decision was a real product decision: <strong>Flutter was chosen
+            because one codebase ships to both iOS and Android</strong>, reducing complexity
+            for a solo non-developer builder. Google ML Kit handles all OCR on-device — meaning
+            no internet required for scanning, no API costs, and no privacy risk. The ingredient
+            analysis is rule-based, not AI, keeping it fast and predictable for V1.
+            <br><br>
+            All 11 core code files were written by Claude based on my product specifications.
+            I described the behaviour, Claude wrote the code. I reviewed, tested, and iterated
+            — just as I would manage any engineering team, except the team is an AI model.
+          </p>
+        </section>
+
+        <!-- 4. Outcome -->
+        <section class="project-section" aria-label="Project outcome">
+          <p class="project-section-title">Outcome</p>
+          <div class="outcome-grid">
+            <div class="outcome-card">
+              <div class="outcome-icon">📱</div>
+              <div class="outcome-title">Cross-Platform App</div>
+              <div class="outcome-desc">One codebase. Two platforms. iOS and Android — built without a single line of manually written code.</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-icon">🧠</div>
+              <div class="outcome-title">Zero Code Knowledge</div>
+              <div class="outcome-desc">Proof that a PM who thinks clearly and prompts precisely can ship a mobile app — no developer needed.</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-icon">🔒</div>
+              <div class="outcome-title">Privacy by Design</div>
+              <div class="outcome-desc">All scanning and analysis happens on-device. No user data leaves the phone. No AI API calls at runtime.</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-icon">🥦</div>
+              <div class="outcome-title">Real User Value</div>
+              <div class="outcome-desc">529 ingredients checked instantly. Colour-coded results. Plain language. Because Uncle John cares about what you eat.</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Dharun Vincent R · All Rights Reserved</p>
+  </footer>
+
+  <!-- ── Shared JavaScript ──────────────────────────────────── -->
+  <script src="../assets/js/main.js"></script>
+
+</body>
+</html>

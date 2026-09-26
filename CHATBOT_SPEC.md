@@ -338,6 +338,18 @@ npx wrangler deploy
 
 ---
 
+## 7a. RENEWING THE API KEY
+
+When the `ANTHROPIC_API_KEY` secret needs to be rotated (expiry, leak, or routine renewal), run:
+
+```bash
+bash chatbot-worker/renew_key.sh
+```
+
+from the repo root. It moves into `chatbot-worker/`, checks `npx` is installed, prompts for the new key with hidden input, validates it starts with `sk-ant-`, and uploads it via `npx wrangler secret put ANTHROPIC_API_KEY`. The key is never written to a file, logged, or printed. After it succeeds, test the chatbot on dharunvincent.com and log the new expiry date in `#anthropic-key-status`.
+
+---
+
 ## 8. MANUAL SETUP CHECKLIST (owner does these; walk him through each)
 
 **Anthropic Console** (console.anthropic.com)
